@@ -26,18 +26,29 @@ public class DbHelper extends SQLiteOpenHelper{
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		// TODO Auto-generated method stub
-		String restaurant = "create table Restaurant("
+		String restaurant = "create table if not exists Restaurant("
 				+ "_id INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL,"
-				+ "name VARCHAR,"
-				+ "address VARCHAR,"
-				+ "phone VARCHAR,"
+				+ "Name VARCHAR,"
+				+ "Address VARCHAR,"
+				+ "Phone VARCHAR,"
 				+ "Longitude VARCHAR,"
-				+ "Latitude INT,"
-				+ "type VARCHAR,"
-				+ "memo VARCHAR"
+				+ "Latitude VARCHAR,"
+				+ "Introduction VARCHAR,"
+				+ "Aircon VARCHAR,"
+				+ "Stars VARCHAR "
 				+ ")";
 		db.execSQL(restaurant);
+		
+		String menu = "create table if not exists Menu("
+				+ "_id INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL,"
+				+ "RestaurantId int,"
+				+ "Name VARCHAR,"
+				+ "Price VARCHAR,"
+				+ "Introduction VARCHAR,"
+				+ "Type VARCHAR,"
+				+ "remark VARCHAR"
+				+ ")";
+		db.execSQL(menu);
 	}
 
 	@Override
